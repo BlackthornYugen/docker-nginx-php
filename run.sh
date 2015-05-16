@@ -1,7 +1,7 @@
 #!/bin/sh
 ACTION=${1:-"none"}
 IMAGE=user/nginx
-CONTAINER=mycomtainer
+CONTAINER=mycontainer
 if [ "rebuild" = $ACTION ]
   then
   docker build -t $IMAGE .
