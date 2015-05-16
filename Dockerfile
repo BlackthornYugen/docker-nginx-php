@@ -33,6 +33,8 @@ RUN chmod +x        /etc/service/nginx/run
 RUN mkdir           /etc/service/phpfpm
 ADD build/phpfpm.sh /etc/service/phpfpm/run
 RUN chmod +x        /etc/service/phpfpm/run
+RUN mkdir -p        /etc/nginx/data
+RUN openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/nginx/data/key.pem -out /etc/nginx/data/cert.crt -days 356 -subj "/C=CA/ST=Ontario/L=Kitchener/O=Organization/OU=Organizational Unit/CN=www.example.com"
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf

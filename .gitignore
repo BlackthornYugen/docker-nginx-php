@@ -2,5 +2,6 @@
 ._*
 .vagrant
 data/
-www/
 .idea/
+*.crt
+*.pem

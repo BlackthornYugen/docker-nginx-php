@@ -1,19 +1,39 @@
 server {
-	server_name = steelcomputers.com;
+	server_name example.com;
 	listen 80 default_server;
-    	return 301 https://$host$request_uri;
+
+	root html;
+	index index.php;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	# pass the PHP scripts to php5-fpm
+	# Note: \.php$ is susceptible to file upload attacks
+	# Consider using: "location ~ ^/(index|app|app_dev|config)\.php(/|$) {"
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		# With php5-fpm:
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+		include fastcgi_params;
+		include fastcgi.conf;
+		fastcgi_param LARA_ENV local; # Environment variable for Laravel
+		fastcgi_param HTTPS off;
+	}
 }
 
 server {
+	server_name example.com;
 	listen 443 default_server;
-	server_name steelcomputers.com;
 
 	root html;
 	index index.php;
 
 	ssl on;
-	ssl_certificate data/cert.pem;
-	ssl_certificate_key data/cert.key;
+	ssl_certificate data/cert.crt;
+	ssl_certificate_key data/key.pem;
 
 	ssl_session_timeout 5m;
 

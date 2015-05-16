@@ -18,7 +18,7 @@ Log out then back in for permissions to take effect
 git clone https://github.com/BlackthornYugen/ubuntu-docker-nginx.git
 cd docker-nginx-php
 ```
-make and save changes ( optional )
+Optionally customize files ( like change example.com in the Dockerfile and default nginx config )
 ```
 sh ./run.sh rebuild
 ```
@@ -30,4 +30,12 @@ sh ./run.sh
 If Dockerfile or build files have been changed, use
 ```
 sh ./run.sh rebuild
+```
+
+Try it out! (for mac and windows boot2docker users, replace localhost with $(boot2docker ip)
+```
+curl http://localhost
+<h1>It works!</h1>
+curl -k https://localhost
+<h1>It works!</h1>
 ```
