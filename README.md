@@ -31,3 +31,11 @@ If Dockerfile or build files have been changed, use
 ```
 sh ./run.sh rebuild
 ```
+
+Try it out! (for mac and windows boot2docker users, replace localhost with $(boot2docker ip)
+```
+curl http://localhost
+<h1>It works!</h1>
+curl -k https://localhost
+<h1>It works!</h1>
+```
