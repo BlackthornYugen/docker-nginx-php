@@ -18,7 +18,7 @@ Log out then back in for permissions to take effect
 git clone https://github.com/BlackthornYugen/ubuntu-docker-nginx.git
 cd docker-nginx-php
 ```
-make and save changes ( optional )
+Optionally customize files ( like change example.com in the Dockerfile and default nginx config )
 ```
 sh ./run.sh rebuild
 ```
